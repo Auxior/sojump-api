@@ -3,6 +3,9 @@ const db = require('../db/index')
 // 导入 bcryptjs 这个包
 const bcrypt = require('bcryptjs')
 
+// 获取用户信息的处理函数
+exports.info = (req, res) => {}
+
 // 注册的处理函数
 exports.register = (req, res) => {
   // 获取客户端提交到服务器的用户信息
