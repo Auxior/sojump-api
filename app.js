@@ -24,11 +24,9 @@ app.use((req, res, next) => {
 })
 
 // 导入并使用路由模块
-const answerRouter = require('./router/answer')
 const questionRouter = require('./router/question')
 const statRouter = require('./router/stat')
 const userRouter = require('./router/user')
-app.use('/api/answer', answerRouter)
 app.use('/api/question', questionRouter)
 app.use('/api/stat', statRouter)
 app.use('/api/user', userRouter)
