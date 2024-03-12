@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-const user_handler = require('../router_handler/user')
+const answer_handler = require('../router_handler/answer')
 
 // 收集（新建）答卷
-router.post('/', user_handler.submitAnswer)
+router.post('/', answer_handler.answer)
 
 module.exports = router
