@@ -3,7 +3,7 @@ const db = require('../db/index')
 // 导入 bcryptjs 这个包
 const bcrypt = require('bcryptjs')
 
-// 注册新用户的处理函数
+// 注册的处理函数
 exports.register = (req, res) => {
   // 获取客户端提交到服务器的用户信息
   const userinfo = req.body
@@ -53,7 +53,7 @@ exports.login = (req, res) => {
     if (!compareResult) return res.cc('登录失败！')
 
     res.send({
-      status: 0,
+      errno: 0,
       message: '登录成功！',
     })
   })
