@@ -3,10 +3,7 @@ const db = require('../db/index')
 // 导入 bcryptjs 这个包
 const bcrypt = require('bcryptjs')
 
-// 获取用户信息的处理函数
-exports.info = (req, res) => {}
-
-// 注册的处理函数
+/** 注册新用户的处理函数 */
 exports.register = (req, res) => {
   // 获取客户端提交到服务器的用户信息
   const userinfo = req.body
@@ -38,7 +35,7 @@ exports.register = (req, res) => {
   })
 }
 
-// 登录的处理函数
+/** 登录的处理函数 */
 exports.login = (req, res) => {
   // 接收表单的数据
   const userinfo = req.body
@@ -56,8 +53,22 @@ exports.login = (req, res) => {
     if (!compareResult) return res.cc('登录失败！')
 
     res.send({
-      errno: 0,
+      status: 0,
       message: '登录成功！',
+    })
+  })
+}
+
+/** 获取用户信息 */
+exports.getUserInfo = (req, res) => {
+  const sql = `select id, username from users where id=?`
+  db.query(sql, req.user.id, (err, results) => {
+    if (err) return res.cc(err)
+    if (results.length !== 1) return res.cc('获取用户信息失败！')
+    res.send({
+      status: 0,
+      message: '获取用户基本信息成功！',
+      data: results[0],
     })
   })
 }
